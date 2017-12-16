@@ -8,7 +8,6 @@ export default () => (
 	<BrowserRouter>
 		<Switch>
 			<Route path="/" exact component={Home} />
-			<Route path="/Home" exact component={Home} />
 			<Route path="/Projects" exact component={Projects} />
 		</Switch>
 	</BrowserRouter>
