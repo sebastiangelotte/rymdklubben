@@ -1,13 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import Navigation from '../components/Navigation'
+import ImageHolder from '../components/ImageHolder'
 
 export default () => (
 	<div>
 		<Header />
-		<Link to="/">Home</Link>
-		<Link to="/Projects">The Alpha Archives</Link>
+		<Navigation />
+		<ImageHolder />
 		<Footer />
 	</div>
 )
