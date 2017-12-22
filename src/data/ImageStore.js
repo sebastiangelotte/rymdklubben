@@ -1,8 +1,12 @@
 import RymdklubbenDispatcher from './RymdklubbenDispatcher'
 import { EventEmitter } from 'events'
 import merge from 'merge'
+const image1 = require('../kikki_face.svg')
+const image2 = require('../kikki_face_no_eyes.svg')
 
-const imgURLs = ['https://i.imgur.com/YMtKG77.png', 'https://i.imgur.com/lJlaGS8.jpg']
+
+
+const imgURLs = [image1, image2]
 let index = 0
 
 function switchImageURL(){

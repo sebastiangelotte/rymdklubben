@@ -33,7 +33,10 @@ export default class ImageHolder extends React.Component {
 	render () {
 		return (
 			<div>
-				<img src={this.state.imageURL} onClick={this.updateImage} style={{width: "400px"}} alt=''/>
+				<img src={this.state.imageURL} onClick={this.updateImage} style={{height: "400px"}} alt=''/>
+				<div>
+					<input type="button" value="Toggle!" onClick={this.updateImage} />
+				</div>
 			</div>
 		)
 	}
