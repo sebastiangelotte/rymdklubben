@@ -23,19 +23,40 @@ export default class ImageHolder extends React.Component {
 		this.setState(ImageStore.getState())
 	}
 
-	updateImage () {
+	nextImage () {
 		RymdklubbenDispatcher.dispatch({
-			actionName: 'UPDATE_IMAGE',
+			actionName: 'NEXT_IMAGE',
 			data: ''
+		})
+	}
+	previousImage () {
+		RymdklubbenDispatcher.dispatch({
+			actionName: 'PREVIOUS_IMAGE',
+			data: ''
+		})
+	}
+
+	selectImage (imageIndex) {
+		RymdklubbenDispatcher.dispatch({
+			actionName: 'SELECT_IMAGE',
+			data: imageIndex
 		})
 	}
 
 	render () {
 		return (
-			<div>
-				<img src={this.state.imageURL} onClick={this.updateImage} style={{height: "400px"}} alt=''/>
+			<div style={{backgroundColor: "#110f29", padding: "50px", textAlign: "center"}}>
+				<div onClick={this.nextImage}>
+					<img src={this.state.activeImageURL} style={{height: "400px", width: "100%", maxWidth: "600px"}} alt=''/>
+				</div>
+				<div style={{textAlign: "center"}}>
+					{this.state.imageURLs.map( (image, imageIndex) =>
+						<img key={imageIndex} src={image} onClick={() => this.selectImage(imageIndex)} style={{height: "100px", maxWidth: "100px", padding: "20px"}} alt=''/>
+					)}
+				</div>
 				<div>
-					<input type="button" value="Toggle!" onClick={this.updateImage} />
+					<input type="button" value="<" onClick={this.previousImage} />
+					<input type="button" value=">" onClick={this.nextImage} />
 				</div>
 			</div>
 		)

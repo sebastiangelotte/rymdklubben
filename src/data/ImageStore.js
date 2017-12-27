@@ -2,20 +2,36 @@ import RymdklubbenDispatcher from './RymdklubbenDispatcher'
 import { EventEmitter } from 'events'
 import merge from 'merge'
 const image1 = require('../kikki_face.svg')
-const image2 = require('../kikki_face_no_eyes.svg')
+const image2 = require('../rymdklubben_isometric.svg')
+const image3 = require('../rymdklubben_neon.svg')
+
+var index = 0
 
 
 
-const imgURLs = [image1, image2]
-let index = 0
+const imgURLs = [image1, image2, image3]
 
-function switchImageURL(){
+function nextImageURL(){
 	index = (index + 1) % imgURLs.length
+}
+
+function previousImageURL(){
+	// TODO: improve me
+	if (index === 0) {
+		index = imgURLs.length -1
+	} else {
+		index--
+	}
+
+}
+
+function selectImageURL(newIndex){
+	index = newIndex
 }
 
 export const ImageStore = merge(EventEmitter.prototype, {
 	getState: () => {
-		return { imageURL: imgURLs[index] }
+		return { imageURLs: imgURLs, activeImageURL: imgURLs[index] }
 	},
 
 	emitChange: function() {
@@ -25,8 +41,16 @@ export const ImageStore = merge(EventEmitter.prototype, {
 
 RymdklubbenDispatcher.register((payload) => {
 	switch(payload.actionName){
-		case 'UPDATE_IMAGE':
-			switchImageURL()
+		case 'NEXT_IMAGE':
+			nextImageURL()
+			ImageStore.emitChange()
+			break
+		case 'PREVIOUS_IMAGE':
+			previousImageURL()
+			ImageStore.emitChange()
+			break
+		case 'SELECT_IMAGE':
+			selectImageURL(payload.data)
 			ImageStore.emitChange()
 			break
 		default:
