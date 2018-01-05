@@ -1,16 +1,37 @@
 import React from 'react'
 import styled from 'styled-components'
+const borderImage = require('../heartbeat_rocket_border.svg')
 
 export default () => (
-	<Footer>2017</Footer>
+	<Footer>
+		<Border src={borderImage} />
+		<Masthead>Rymdklubben 2017-2018</Masthead>
+	</Footer>
 )
 
-const color = '#ff0069'
+const color = '#1b1935'
+const backgroundColor = '#16142f'
 
 const Footer = styled.div`
-	position: absolute;
 	width: 100%;
-	padding: 20px;
-	border-top: 1px solid ${color};
-	color: ${color};
+	position: fixed;
+	bottom: 0;
+	color: #FFF;
+	font-family: monospace;
+	letter-spacing: 2px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+`
+const Border = styled.img`
+	width: 100%;
+	position: relative;
+	bottom: -1px;
+`
+
+const Masthead = styled.div`
+	padding: 30px;
+	width: 100%;
+	text-align: center;
+	background-color: ${backgroundColor};
 `

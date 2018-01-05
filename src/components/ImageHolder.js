@@ -1,6 +1,7 @@
 import React from 'react'
 import { ImageStore }  from '../data/ImageStore'
 import RymdklubbenDispatcher from '../data/RymdklubbenDispatcher'
+import styled from 'styled-components'
 
 export default class ImageHolder extends React.Component {
 	constructor(props){
@@ -45,20 +46,55 @@ export default class ImageHolder extends React.Component {
 
 	render () {
 		return (
-			<div style={{backgroundColor: "#110f29", padding: "50px", textAlign: "center"}}>
+			<Wrapper>
 				<div onClick={this.nextImage}>
-					<img src={this.state.activeImageURL} style={{height: "400px", width: "100%", maxWidth: "600px"}} alt=''/>
+					<MainImage src={this.state.activeImageURL} alt=''></MainImage>
 				</div>
-				<div style={{textAlign: "center"}}>
+				<ThumbnailPicker style={{textAlign: "center"}}>
+					<ImageButton onClick={this.previousImage}>&lt;</ImageButton>
 					{this.state.imageURLs.map( (image, imageIndex) =>
-						<img key={imageIndex} src={image} onClick={() => this.selectImage(imageIndex)} style={{height: "100px", maxWidth: "100px", padding: "20px"}} alt=''/>
+						<ThumbnailImage key={imageIndex} src={image} onClick={() => this.selectImage(imageIndex)} alt=''></ThumbnailImage>
 					)}
-				</div>
-				<div>
-					<input type="button" value="<" onClick={this.previousImage} />
-					<input type="button" value=">" onClick={this.nextImage} />
-				</div>
-			</div>
+					<ImageButton onClick={this.nextImage}>&gt;</ImageButton>
+				</ThumbnailPicker>
+			</Wrapper>
 		)
 	}
 }
+
+const Wrapper = styled.div`
+	padding: 50px;
+	text-align: center;
+`
+
+const MainImage = styled.img`
+	height: 400px;
+	width: 100%;
+	max-width: 600px;
+	cursor: pointer;
+	padding: 20px;
+`
+
+const ThumbnailPicker = styled.div`
+	display: flex;
+	justify-content: center;
+`
+
+const ThumbnailImage = styled.img`
+	max-height: 100px;
+	max-width: 100px;
+	padding: 20px;
+	background-color: #16142f;
+    border: 2px solid #1b1935;
+	margin: 2px;
+	cursor: pointer;
+`
+
+const ImageButton = styled.div`
+	cursor: pointer;
+	font-family: monospace;
+	color: #FFF;
+	font-size: 40px;
+	align-self: center;
+	padding: 0 20px;
+`

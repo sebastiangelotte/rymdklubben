@@ -5,16 +5,22 @@ import Footer from '../components/Footer'
 import Navigation from '../components/Navigation'
 
 export default () => (
-	<div>
+	<Wrapper>
 		<Header />
 		<Navigation />
 		<Message>
 			These items, previously unreleased and protected, are now free for the world to benefit from.
 		</Message>
 		<Footer />
-	</div>
+	</Wrapper>
 )
+
+const Wrapper = styled.div`
+	background-color: #110f29;
+	min-height: 100vh;
+`
 
 const Message = styled.div`
 	font-weight: bold;
+	color: #FFF;
 `
