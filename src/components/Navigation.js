@@ -8,10 +8,10 @@ export default () => (
 			<StyledLink to="/">Home</StyledLink>
 		</NavListItem>
 		<NavListItem>
-			<StyledLink to="/Projects">The Alpha Archives</StyledLink>
+			<StyledLink to="/Launches">Space launches</StyledLink>
 		</NavListItem>
 		<NavListItem>
-			<StyledLink to="/Launches">Space launches</StyledLink>
+			<StyledLink to="/Media">Media</StyledLink>
 		</NavListItem>
 	</NavList>
 )

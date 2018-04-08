@@ -1,9 +1,9 @@
 import RymdklubbenDispatcher from './RymdklubbenDispatcher'
 import { EventEmitter } from 'events'
 import merge from 'merge'
-const image1 = require('../rymdklubben_neon.svg')
-const image2 = require('../rymdklubben_isometric.svg')
-const image3 = require('../kikki_face.svg')
+const image1 = require('../assets/rymdklubben_neon.svg')
+const image2 = require('../assets/rymdklubben_isometric.svg')
+const image3 = require('../assets/kikki_face.svg')
 
 var index = 0
 

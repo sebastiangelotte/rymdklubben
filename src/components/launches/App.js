@@ -21,13 +21,15 @@ class App extends React.Component {
 		}
 	}
 
-	componentDidMount() {
-		axios.get('https://launchlibrary.net/1.2/launch/next/20')
-			.then(res => {
-				const data = res.data.launches
-				this.setState({ data })
-			})
-	}
+	async componentDidMount() {
+		try{
+			const res = await axios.get('https://www.rymdklubben.com/api/launches')
+			const data = res.data
+			this.setState({ data })
+		} catch(err) {
+			 console.log(err)
+		}
+	 }
 
 	render() {
 		return (

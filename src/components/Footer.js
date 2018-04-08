@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-const borderImage = require('../heartbeat_rocket_border.svg')
+const borderImage = require('../assets/heartbeat_rocket_border.svg')
 
 export default () => (
 	<Footer>
