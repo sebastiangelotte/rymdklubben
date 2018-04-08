@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 export default () => (
 	<NavList>
 		<NavListItem>
-			<StyledLink to="/">Home</StyledLink>
+			<StyledLink to={homeLocation}>Home</StyledLink>
 		</NavListItem>
 		<NavListItem>
-			<StyledLink to="/Launches">Space launches</StyledLink>
+			<StyledLink to={launchesLocation}>Space launches</StyledLink>
 		</NavListItem>
 		<NavListItem>
-			<StyledLink to="/Media">Media</StyledLink>
+			<StyledLink to={mediaLocation}>Media</StyledLink>
 		</NavListItem>
 	</NavList>
 )
@@ -38,3 +38,15 @@ const StyledLink = styled(Link)`
 		text-decoration: underline;
 	}
 `
+
+const homeLocation = {
+	pathname: '/'
+}
+
+const launchesLocation = {
+	pathname: '/launches'
+}
+
+const mediaLocation = {
+	pathname: '/media'
+}
