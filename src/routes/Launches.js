@@ -4,23 +4,20 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Navigation from '../components/Navigation'
 
+import App from '../components/launches/App'
+
+
 export default () => (
 	<Wrapper>
 		<Header />
 		<Navigation />
-		<Message>
-			These items, previously unreleased and protected, are now free for the world to benefit from.
-		</Message>
+      	<App />
 		<Footer />
 	</Wrapper>
 )
 
 const Wrapper = styled.div`
 	background-color: #110f29;
-	min-height: 100vh;
-`
-
-const Message = styled.div`
-	font-weight: bold;
-	color: #FFF;
+	height: 100vh;
+  overflow: hidden;
 `
