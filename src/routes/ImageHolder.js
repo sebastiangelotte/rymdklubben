@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Navigation from '../components/Navigation'
 import App from '../components/ImageHolder'
 
@@ -11,7 +10,6 @@ export default () => (
 		<Header />
 		<Navigation />
       	<App />
-		<Footer />
 	</Wrapper>
 )
 
