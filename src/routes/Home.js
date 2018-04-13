@@ -4,13 +4,15 @@ import Navigation from '../components/Navigation'
 import ImageHolder from '../components/ImageHolder'
 import styled from 'styled-components'
 
-import Logo from '../assets/Rymdklubben_neon.js'
+import NeonLogo from '../assets/NeonLogo'
 
 export default () => (
 	<Wrapper>
 		<Header />
 		<Navigation />
-		<Image />
+		<LogoWrapper>
+			<NeonLogo />
+		</LogoWrapper>
 	</Wrapper>
 )
 
@@ -19,9 +21,14 @@ const Wrapper = styled.div`
 	min-height: 100vh;
 `
 
-const Image = styled(Logo)`
+const LogoWrapper = styled.div`
 	width: 80%;
+	height: 200px;
 	margin: auto;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
+
+	* {
+		width: 100%;
+	}
 `
