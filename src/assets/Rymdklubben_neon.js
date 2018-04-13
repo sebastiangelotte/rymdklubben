@@ -13,7 +13,7 @@ export default function Rymdklubben_neon(props) {
     }
   }
 
-  setInterval(flicker, 1000)
+  //setInterval(flicker, 1000)
 
 
   return (
