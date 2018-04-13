@@ -4,13 +4,13 @@ import Navigation from '../components/Navigation'
 import ImageHolder from '../components/ImageHolder'
 import styled from 'styled-components'
 
-const image = require('../assets/rymdklubben_neon.svg')
+import Logo from '../assets/Rymdklubben_neon.js'
 
 export default () => (
 	<Wrapper>
 		<Header />
 		<Navigation />
-		<Image src={image}></Image>
+		<Image />
 	</Wrapper>
 )
 
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 	min-height: 100vh;
 `
 
-const Image = styled.img`
+const Image = styled(Logo)`
 	width: 80%;
 	margin: auto;
 	position: absolute;
