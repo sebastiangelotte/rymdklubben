@@ -35,7 +35,7 @@ class App extends React.Component {
 		return (
 			<Root>
 				<Controls>
-          <Filter />
+          			<Filter />
 					<Masthead></Masthead>
 				</Controls>
 				<Wrapper>
@@ -58,7 +58,8 @@ const Root = styled.div`
 	padding: 0;
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
-	background-image: url('${ background }');
+	// background-image: url('${ background }');
+	background-color: #110f29;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
