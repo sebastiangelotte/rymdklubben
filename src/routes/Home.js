@@ -30,5 +30,6 @@ const LogoWrapper = styled.div`
 
 	* {
 		width: 100%;
+		transition: opacity 200ms ease-in-out;
 	}
 `
