@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
 import Navigation from '../components/Navigation'
-import ImageHolder from '../components/ImageHolder'
 import styled from 'styled-components'
 
 import NeonLogo from '../assets/NeonLogo'

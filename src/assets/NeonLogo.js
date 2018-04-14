@@ -12,7 +12,7 @@ export default class Rymdklubben_neon extends React.Component {
   }
   
   toggleLight() {
-    if(this.state.opacity == 1) {
+    if(this.state.opacity === 1) {
       this.setState({
         opacity: 0.3
       })
