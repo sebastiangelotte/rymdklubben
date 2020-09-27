@@ -3,10 +3,8 @@ import styled from 'styled-components'
 
 import { ReactComponent as NeonSVG } from '../assets/rymdklubben_neon.svg'
 
-const Wrapper = styled.div`
-  path {
-    opacity: ${props => props.opacity}
-  }
+const Wrapper = styled(NeonSVG)`
+  opacity: ${props => props.opacity}
 `
 
 const NeonLogo = () => {
@@ -15,11 +13,7 @@ const NeonLogo = () => {
     setOpacity((opacity === 1 ? 0.3 : 1))
   }
 
-  return (
-    <Wrapper opacity={opacity} onClick={toggleLight}>
-      <NeonSVG></NeonSVG>
-    </Wrapper>
-  ) 
+  return <Wrapper opacity={opacity} onClick={toggleLight} />
 }
 
 export default NeonLogo
