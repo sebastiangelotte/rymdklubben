@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Navigation from '../components/Navigation'
 import styled from 'styled-components'
 
-import NeonLogo from '../assets/NeonLogo'
+import NeonLogo from '../components/NeonLogo'
 
 export default () => (
 	<Wrapper>
