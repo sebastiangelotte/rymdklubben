@@ -1,21 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default class Date extends React.Component {
-
-	render() {
-		return (
-			<Wrapper>
-				<Day>
-					{getDay(this.props.date)}
-				</Day>
-				<Month>
-					{getMonth(this.props.date)}
-				</Month>
-			</Wrapper>
-		)
-	}
+const Date = ({ date }) => {
+	return (
+		<Wrapper>
+			<Day>
+				{getDay(date)}
+			</Day>
+			<Month>
+				{getMonth(date)}
+			</Month>
+		</Wrapper>
+	)
 }
+
+export default Date
 
 function getMonth(text) {
 	const date = text.substr(0, text.indexOf(','))

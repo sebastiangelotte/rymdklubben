@@ -1,17 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default class Filter extends React.Component {
-
-	render() {
-		return (
-      <div>
-        <TempMessage>Upcoming launches</TempMessage>
-        <Wrapper>[Filter coming soon]</Wrapper>
-      </div>
-		)
-	}
+const Filter = () => {
+	return (
+		<div>
+			<TempMessage>Upcoming launches</TempMessage>
+			<Wrapper>[Filter coming soon]</Wrapper>
+		</div>
+	)
 }
+
+export default Filter
 
 // CSS
 const TempMessage = styled.h2`

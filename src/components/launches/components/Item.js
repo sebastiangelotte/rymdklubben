@@ -4,20 +4,18 @@ import { media } from '../utils/style-utils';
 
 import Date from './Date'
 
-export default class Item extends React.Component {
-
-	render() {
-		return (
-			<Wrapper key={this.props.data.id} background={this.props.data.rocket.imageURL}>
-				{getVidUrl(this.props.data.vidURLs)}
-				<Date date={this.props.data.windowstart}/>
-				<Text large>{this.props.data.name}</Text>
-				<Text small>{this.props.data.windowstart}</Text>
-			</Wrapper>
-		)
-	}
+const Item = ({ data }) => {
+	return (
+		<Wrapper key={data.id} background={data.rocket.imageURL}>
+			{getVidUrl(data.vidURLs)}
+			<Date date={data.windowstart}/>
+			<Text large>{data.name}</Text>
+			<Text small>{data.windowstart}</Text>
+		</Wrapper>
+	)
 }
 
+export default Item
 
 function getVidUrl(url_arr){
 		if(url_arr.length !== 0){

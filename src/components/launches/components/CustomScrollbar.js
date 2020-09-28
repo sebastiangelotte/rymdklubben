@@ -3,25 +3,25 @@ import React from 'react'
 
 import { Scrollbars } from 'react-custom-scrollbars';
 
-export default class CustomScrollbar extends React.Component {
-	render() {
-		return (
-			<Scrollbars
-				renderThumbVertical={({style, ...props }) =>
-					<div {...props} style={{ ...style}, cssThumb}>
-					</div>
-				}
+const CustomScrollbar = (props) => {
+	return (
+		<Scrollbars
+			renderThumbVertical={({style, ...props }) =>
+				<div {...props} style={{ ...style}, cssThumb}>
+				</div>
+			}
 
-				renderTrackVertical={({style, ...props}) =>
-					<div {...props} style={cssTrack}>
-					</div>
-				}
-			>
-			{this.props.children}
+			renderTrackVertical={({style, ...props}) =>
+				<div {...props} style={cssTrack}>
+				</div>
+			}
+		>
+			{props.children}
 		</Scrollbars>
-		)
-	}
+	)
 }
+
+export default CustomScrollbar
 
 const cssThumb = {
 	backgroundColor: "white",

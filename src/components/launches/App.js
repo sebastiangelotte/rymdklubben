@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -8,48 +8,43 @@ import Filter from './components/Filter'
 import Item from './components/Item'
 import CustomScrollbar from './components/CustomScrollbar'
 
-const background = require('../../assets/bg.jpg')
-const logo = require('../../assets/logo.svg')
+import logo from '../../assets/logo.svg'
+import background from '../../assets/bg.jpg'
 
 
-class App extends React.Component {
-	constructor(props) {
-		super(props)
+const App = () => {
 
-		this.state = {
-			data: []
+	const [data, setData] = useState([])
+	useEffect(() => {
+		async function fetchData(){
+			try{
+				const res = await axios.get('https://www.rymdklubben.com/api/launches')
+				setData(res.data)
+			} catch(err) {
+				 console.log(err)
+			}
 		}
-	}
-
-	async componentDidMount() {
-		try{
-			const res = await axios.get('https://www.rymdklubben.com/api/launches')
-			const data = res.data
-			this.setState({ data })
-		} catch(err) {
-			 console.log(err)
-		}
-	 }
-
-	render() {
-		return (
-			<Root>
-				<Controls>
-          			<Filter />
-					<Masthead></Masthead>
-				</Controls>
-				<Wrapper>
-					<CustomScrollbar>
-						{this.state.data.map(item =>
-							<Item key={item.id} data={item} />
-						)}
-					</CustomScrollbar>
-				</Wrapper>
-			</Root>
-		)
-	}
+		fetchData()
+	}, [])
+		
+	return (
+		<Root>
+			<Controls>
+				<Filter />
+				<Masthead></Masthead>
+			</Controls>
+			<Wrapper>
+				<CustomScrollbar>
+					{data.map(item =>
+						<Item key={item.id} data={item} />
+					)}
+				</CustomScrollbar>
+			</Wrapper>
+		</Root>
+	)
 }
 
+export default App
 
 //CSS
 const Root = styled.div`
@@ -115,5 +110,3 @@ const Masthead = styled.div`
 		display: none;
 	`}
 `
-
-export default App
