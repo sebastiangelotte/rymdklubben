@@ -1,71 +1,51 @@
-import React from "react";
-import { ImageStore } from "../data/ImageStore";
-import RymdklubbenDispatcher from "../data/RymdklubbenDispatcher";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-export default class ImageHolder extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = ImageStore.getState();
-    this.onChange = this.onChange.bind(this);
+import image1 from "../assets/rymdklubben_neon.svg";
+import image2 from "../assets/rymdklubben_isometric.svg";
+import image3 from "../assets/kikki_face.svg";
+
+const ImageHolder = () => {
+  const [imageURLs] = useState([image1, image2, image3]);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  function nextImage() {
+    const newIndex = (activeImageIndex + 1) % imageURLs.length;
+    setActiveImageIndex(newIndex);
   }
 
-  componentDidMount() {
-    // Listen to store for change
-    ImageStore.addListener("change", this.onChange);
+  function previousImage() {
+    const len = imageURLs.length;
+    const newIndex = (activeImageIndex + len - 1) % len;
+    setActiveImageIndex(newIndex);
   }
 
-  componentWillUnmount() {
-    // Remove listener on unmount
-    ImageStore.removeListener("change", this.onChange);
+  function selectImage(imageIndex) {
+    setActiveImageIndex(imageIndex);
   }
 
-  onChange() {
-    this.setState(ImageStore.getState());
-  }
+  return (
+    <Wrapper>
+      <div onClick={nextImage}>
+        <MainImage src={imageURLs[activeImageIndex]} alt=""></MainImage>
+      </div>
+      <ThumbnailPicker style={{ textAlign: "center" }}>
+        <ImageButton onClick={previousImage}>&lt;</ImageButton>
+        {imageURLs.map((image, imageIndex) => (
+          <ThumbnailImage
+            key={imageIndex}
+            src={image}
+            onClick={() => selectImage(imageIndex)}
+            alt=""
+          ></ThumbnailImage>
+        ))}
+        <ImageButton onClick={nextImage}>&gt;</ImageButton>
+      </ThumbnailPicker>
+    </Wrapper>
+  );
+};
 
-  nextImage() {
-    RymdklubbenDispatcher.dispatch({
-      actionName: "NEXT_IMAGE",
-      data: "",
-    });
-  }
-  previousImage() {
-    RymdklubbenDispatcher.dispatch({
-      actionName: "PREVIOUS_IMAGE",
-      data: "",
-    });
-  }
-
-  selectImage(imageIndex) {
-    RymdklubbenDispatcher.dispatch({
-      actionName: "SELECT_IMAGE",
-      data: imageIndex,
-    });
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <div onClick={this.nextImage}>
-          <MainImage src={this.state.activeImageURL} alt=""></MainImage>
-        </div>
-        <ThumbnailPicker style={{ textAlign: "center" }}>
-          <ImageButton onClick={this.previousImage}>&lt;</ImageButton>
-          {this.state.imageURLs.map((image, imageIndex) => (
-            <ThumbnailImage
-              key={imageIndex}
-              src={image}
-              onClick={() => this.selectImage(imageIndex)}
-              alt=""
-            ></ThumbnailImage>
-          ))}
-          <ImageButton onClick={this.nextImage}>&gt;</ImageButton>
-        </ThumbnailPicker>
-      </Wrapper>
-    );
-  }
-}
+export default ImageHolder;
 
 const Wrapper = styled.div`
   padding: 50px;
