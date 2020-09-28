@@ -1,5 +1,5 @@
-import { Dispatcher } from 'flux'
+import { Dispatcher } from "flux";
 
-const RymdklubbenDispatcher = new Dispatcher()
+const RymdklubbenDispatcher = new Dispatcher();
 
-export default RymdklubbenDispatcher
+export default RymdklubbenDispatcher;
