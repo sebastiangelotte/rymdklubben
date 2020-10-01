@@ -76,7 +76,7 @@ const Wrapper = styled.div`
 	width: 70%;
 	max-width: 800px;
 	//overflow: initial;
-	height: 100%;
+	height: 90%;
 
 
 
