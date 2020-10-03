@@ -66,10 +66,10 @@ const Root = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 70%;
-  max-width: 800px;
-  //overflow: initial;
-  height: 100%;
+	width: 70%;
+	max-width: 800px;
+	//overflow: initial;
+	height: 90%;
 
   ${media.medium`
 		width: 100%;
