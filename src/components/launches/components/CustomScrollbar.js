@@ -1,38 +1,35 @@
 /* eslint-disable */
-import React from 'react'
+import React from "react";
 
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from "react-custom-scrollbars";
 
-export default class CustomScrollbar extends React.Component {
-	render() {
-		return (
-			<Scrollbars
-				renderThumbVertical={({style, ...props }) =>
-					<div {...props} style={{ ...style}, cssThumb}>
-					</div>
-				}
+const CustomScrollbar = (props) => {
+  return (
+    <Scrollbars
+      renderThumbVertical={({ style, ...props }) => (
+        <div {...props} style={({ ...style }, cssThumb)}></div>
+      )}
+      renderTrackVertical={({ style, ...props }) => (
+        <div {...props} style={cssTrack}></div>
+      )}
+    >
+      {props.children}
+    </Scrollbars>
+  );
+};
 
-				renderTrackVertical={({style, ...props}) =>
-					<div {...props} style={cssTrack}>
-					</div>
-				}
-			>
-			{this.props.children}
-		</Scrollbars>
-		)
-	}
-}
+export default CustomScrollbar;
 
 const cssThumb = {
-	backgroundColor: "white",
-	borderRadius: "3px"
-}
+  backgroundColor: "white",
+  borderRadius: "3px",
+};
 
 const cssTrack = {
-	backgroundColor: "transparent",
-	position: "static",
-	height: "100vh",
-	width: "0.55vw",
-	float: "right",
-	margin: "15px 0"
-}
+  backgroundColor: "transparent",
+  position: "static",
+  height: "100vh",
+  width: "0.55vw",
+  float: "right",
+  margin: "15px 0",
+};
